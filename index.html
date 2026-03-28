@@ -18,7 +18,8 @@
     <title>fotofolio — Websites for Photographers</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600&family=Sometype+Mono:wght@400;700&display=swap"
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600&family=Sometype+Mono:wght@400;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -125,7 +126,91 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            z-index: 100;
+            z-index: 500;
+        }
+
+        .menu-trigger {
+            display: none;
+        }
+
+        @media (max-width: 1024px) {
+            nav {
+                padding: 2.25rem 2rem;
+                justify-content: space-between;
+                text-align: left;
+            }
+
+            .nav-links {
+                display: none !important;
+            }
+
+            .menu-trigger {
+                display: block !important;
+                background: none;
+                border: none;
+                color: #ffffff !important;
+                font-family: 'Sometype Mono', monospace;
+                font-size: 0.9rem;
+                letter-spacing: 0.25em;
+                cursor: pointer;
+                padding: 0.5rem;
+                margin-right: -0.5rem;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+
+            .logo {
+                font-size: 1.35rem;
+            }
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--black);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2.5rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .mobile-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .overlay-close {
+            position: absolute;
+            top: 2.5rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-family: 'Sometype Mono', monospace;
+            font-size: 0.85rem;
+            letter-spacing: 0.2em;
+            cursor: pointer;
+        }
+
+        .overlay-link {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--white);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .overlay-link:hover {
+            opacity: 0.5;
         }
 
         .logo {
@@ -249,6 +334,19 @@
             color: var(--white);
         }
 
+        .hero-btns {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-btns {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
         /* Value Proposition */
         .value-props {
             background-color: var(--white);
@@ -293,7 +391,9 @@
         .portfolio-frame {
             background-color: #000;
             width: 320px;
-            height: 640px;
+            max-width: 100%;
+            aspect-ratio: 9/18;
+            height: auto;
             margin: 0 auto;
             border-radius: 40px;
             border: 12px solid #111;
@@ -310,7 +410,8 @@
         }
 
         .frame-header {
-            display: none; /* Hide desktop frame header in mobile view */
+            display: none;
+            /* Hide desktop frame header in mobile view */
         }
 
         .frame-content {
@@ -562,8 +663,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .form-control:focus {
@@ -726,134 +832,126 @@
 
         @media (max-width: 480px) {
             .container {
-                padding: 0 1rem;
+                padding: 0 1.25rem;
             }
 
             .hero {
-                padding: 2rem 0;
+                padding: 4rem 0;
             }
 
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
                 letter-spacing: -0.5px;
             }
 
             .hero p {
-                font-size: 1.1rem;
-                margin-bottom: 2rem;
+                font-size: 1.15rem;
+                margin-bottom: 2.5rem;
             }
 
             .hero-content {
-                padding: 2rem 1.5rem;
+                padding: 2rem 1.75rem;
                 border-radius: 20px;
             }
 
             .section-title {
-                font-size: 1.6rem;
-            }
-
-            .frame-content {
-                height: 350px;
-            }
-
-            .frame-header {
-                padding: 0;
-            }
-
-            .frame-url {
-                display: none;
-            }
-
-            .frame-dots {
-                gap: 0.4rem;
-            }
-
-            .frame-dot {
-                width: 10px;
-                height: 10px;
+                font-size: 1.75rem;
+                margin-bottom: 4rem;
             }
 
             .portfolio-frame {
-                padding: 1rem;
-            }
-
-            .btn {
-                padding: 0.9rem 1.5rem;
-                font-size: 0.95rem;
-            }
-
-            .portfolio-arrow {
-                width: 40px;
-                height: 40px;
-                font-size: 0.9rem;
-            }
-
-            .portfolio-controls {
-                gap: 1rem;
-            }
-
-            .portfolio-dot {
-                width: 10px;
-                height: 10px;
-            }
-
-            .portfolio-thumbnail {
-                width: 75px;
-                height: 50px;
-            }
-
-            .thumbnail-label {
-                font-size: 0.6rem;
-                padding: 0.2rem;
-            }
-
-            .value-icon {
-                font-size: 2.5rem;
-            }
-
-            .value-card h3,
-            .process-step h3,
-            .service-card h3 {
-                font-size: 1.3rem;
-            }
-
-            .step-number {
-                font-size: 2.5rem;
-            }
-
-            .cta h2 {
-                font-size: 2rem;
-            }
-
-            .cta-form {
-                padding: 1.5rem;
-            }
-
-            .form-control {
-                padding: 0.9rem;
-                font-size: 0.95rem;
-            }
-
-            section {
-                padding: 2.5rem 0;
-            }
-
-            .scroll-hint {
-                font-size: 0.8rem;
-                padding: 0.4rem 0.8rem;
-            }
-
-            .view-site {
-                font-size: 0.9rem;
+                width: 280px;
+                /* Force consistent phone look on small devices */
+                border-width: 10px;
+                border-radius: 34px;
             }
 
             .portfolio-info h3 {
-                font-size: 1.3rem;
+                font-size: 2rem;
             }
 
             .portfolio-info p {
-                font-size: 0.9rem;
+                font-size: 1rem;
             }
+
+            .btn {
+                padding: 1.1rem 2rem;
+                font-size: 1rem;
+            }
+
+            .portfolio-arrow {
+                width: 50px;
+                height: 50px;
+                font-size: 1rem;
+            }
+
+            .portfolio-controls {
+                gap: 1.25rem;
+            }
+
+            .portfolio-dot {
+                width: 8px;
+                height: 8px;
+            }
+        }
+
+        .portfolio-thumbnail {
+            width: 75px;
+            height: 50px;
+        }
+
+        .thumbnail-label {
+            font-size: 0.6rem;
+            padding: 0.2rem;
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+        }
+
+        .value-card h3,
+        .process-step h3,
+        .service-card h3 {
+            font-size: 1.3rem;
+        }
+
+        .step-number {
+            font-size: 2.5rem;
+        }
+
+        .cta h2 {
+            font-size: 2rem;
+        }
+
+        .cta-form {
+            padding: 1.5rem;
+        }
+
+        .form-control {
+            padding: 0.9rem;
+            font-size: 0.95rem;
+        }
+
+        section {
+            padding: 2.5rem 0;
+        }
+
+        .scroll-hint {
+            font-size: 0.8rem;
+            padding: 0.4rem 0.8rem;
+        }
+
+        .view-site {
+            font-size: 0.9rem;
+        }
+
+        .portfolio-info h3 {
+            font-size: 1.3rem;
+        }
+
+        .portfolio-info p {
+            font-size: 0.9rem;
+        }
         }
 
         @media (max-width: 360px) {
@@ -949,7 +1047,16 @@
             <a href="#packages" class="nav-link">Packages</a>
             <a href="#proposal" class="nav-link">Contact</a>
         </div>
+        <button class="menu-trigger" id="menu-open">MENU</button>
     </nav>
+
+    <!-- Mobile Overlay Navigation -->
+    <div class="mobile-overlay" id="mobile-overlay">
+        <button class="overlay-close" id="menu-close">CLOSE</button>
+        <a href="#portfolio" class="overlay-link">Portfolio</a>
+        <a href="#packages" class="overlay-link">Packages</a>
+        <a href="#proposal" class="overlay-link">Contact</a>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero">
@@ -962,11 +1069,14 @@
         <div class="container">
             <div class="hero-content fade-in">
                 <h1>Websites that book more clients for photographers</h1>
-                <p>Convert viewers into lifelong clients with high-end digital experiences tailored for visual storytellers and photography studios.
+                <p>Convert viewers into lifelong clients with high-end digital experiences tailored for visual
+                    storytellers and photography studios.
                 </p>
-                <div style="display: flex; gap: 1.5rem;">
+                <div class="hero-btns">
                     <a href="#proposal" class="btn">Get your free preview</a>
-                    <a href="#portfolio" class="btn" style="background-color: transparent; color: white;">View Showcase</a>
+                    <a href="#portfolio" class="btn"
+                        style="background-color: transparent; color: var(--white); border: 1px solid var(--white);">View
+                        Showcase</a>
                 </div>
             </div>
         </div>
@@ -978,17 +1088,22 @@
             <h2 class="section-title">Elevating Your Digital Presence</h2>
             <div class="value-grid">
                 <div class="value-card fade-in">
-                    <span class="mono" style="color: var(--gray-dark); margin-bottom: 2rem; display: block;">Sophistication</span>
+                    <span class="mono"
+                        style="color: var(--gray-dark); margin-bottom: 2rem; display: block;">Sophistication</span>
                     <h3>Editorial Grade Design</h3>
-                    <p>Websites that look like they belong in a high-end fashion magazine, matching the quality of your photography.</p>
+                    <p>Websites that look like they belong in a high-end fashion magazine, matching the quality of your
+                        photography.</p>
                 </div>
                 <div class="value-card fade-in">
-                    <span class="mono" style="color: var(--gray-dark); margin-bottom: 2rem; display: block;">Performance</span>
+                    <span class="mono"
+                        style="color: var(--gray-dark); margin-bottom: 2rem; display: block;">Performance</span>
                     <h3>Swift Loading</h3>
-                    <p>Optimized image delivery so your portfolio loads instantly without sacrificing a single pixel of quality.</p>
+                    <p>Optimized image delivery so your portfolio loads instantly without sacrificing a single pixel of
+                        quality.</p>
                 </div>
                 <div class="value-card fade-in">
-                    <span class="mono" style="color: var(--gray-dark); margin-bottom: 2rem; display: block;">Conversion</span>
+                    <span class="mono"
+                        style="color: var(--gray-dark); margin-bottom: 2rem; display: block;">Conversion</span>
                     <h3>Strategic Booking</h3>
                     <p>Custom-built funnels designed specifically to turn "just browsing" into confirmed bookings.</p>
                 </div>
@@ -1005,11 +1120,13 @@
                     <h3 id="project-name">The Minimalist Collective</h3>
                     <div>
                         <span class="mono" style="color: var(--black); font-weight: 700;">The Challenge</span>
-                        <p id="project-challenge">Creating a digital space that feels as quiet and powerful as architectural photography.</p>
+                        <p id="project-challenge">Creating a digital space that feels as quiet and powerful as
+                            architectural photography.</p>
                     </div>
                     <div>
                         <span class="mono" style="color: var(--black); font-weight: 700;">The Solution</span>
-                        <p id="project-solution">A monochrome palette and generous white space to let the visual assets speak for themselves.</p>
+                        <p id="project-solution">A monochrome palette and generous white space to let the visual assets
+                            speak for themselves.</p>
                     </div>
 
                     <div class="portfolio-controls">
@@ -1030,7 +1147,8 @@
                         <div class="iframe-overlay" id="iframe-overlay">
                             <div class="loading-spinner"></div>
                         </div>
-                        <iframe class="website-iframe" id="iframe-0" data-src="https://artistry-by-ariel.pages.dev/"></iframe>
+                        <iframe class="website-iframe" id="iframe-0"
+                            data-src="https://artistry-by-ariel.pages.dev/"></iframe>
                         <iframe class="website-iframe" id="iframe-1" data-src="https://adp-preview.pages.dev/"></iframe>
                         <iframe class="website-iframe" id="iframe-2" data-src="https://lg-preview.pages.dev/"></iframe>
                     </div>
@@ -1047,17 +1165,20 @@
                 <div class="process-step fade-in">
                     <span class="step-number">01</span>
                     <h3>Aesthetic Discovery</h3>
-                    <p>We analyze your photography style—lighting, mood, and composition—to ensure your website is an extension of your lens.</p>
+                    <p>We analyze your photography style—lighting, mood, and composition—to ensure your website is an
+                        extension of your lens.</p>
                 </div>
                 <div class="process-step fade-in">
                     <span class="step-number">02</span>
                     <h3>Editorial Build</h3>
-                    <p>Your site is hand-crafted with high-end typography and smooth transitions that reflect an expensive editorial feel.</p>
+                    <p>Your site is hand-crafted with high-end typography and smooth transitions that reflect an
+                        expensive editorial feel.</p>
                 </div>
                 <div class="process-step fade-in">
                     <span class="step-number">03</span>
                     <h3>Client Conversion</h3>
-                    <p>We integrate booking systems and lead magnets that simplify the path from first click to deposit paid.</p>
+                    <p>We integrate booking systems and lead magnets that simplify the path from first click to deposit
+                        paid.</p>
                 </div>
             </div>
         </div>
@@ -1071,39 +1192,40 @@
                 <!-- Tier 1 -->
                 <div class="package-card fade-in">
                     <span class="package-name">Essential</span>
-                    <div class="package-price">$1,500</div>
+                    <div class="package-price">$350</div>
                     <ul class="package-features">
                         <li>Custom Single-Page Website</li>
-                        <li>High-Resolution Image Optimization</li>
                         <li>Mobile-Responsive Design</li>
                         <li>Contact Form Integration</li>
+                        <li>Image Optimization</li>
                         <li>Basic SEO Setup</li>
                     </ul>
                     <a href="#proposal" class="btn">Get your preview</a>
                 </div>
                 <!-- Tier 2 -->
-                <div class="package-card fade-in" style="border-color: var(--black); transform: scale(1.05); background: #fdfdfd;">
+                <div class="package-card fade-in"
+                    style="border-color: var(--black); transform: scale(1.05); background: #fdfdfd;">
                     <span class="package-name">Professional</span>
-                    <div class="package-price">$3,500</div>
+                    <div class="package-price">$650</div>
                     <ul class="package-features">
-                        <li>Multi-Page Experience</li>
-                        <li>Advanced Branding & Identity</li>
-                        <li>Client Booking System</li>
-                        <li>Detailed SEO Strategy</li>
-                        <li>Custom Interactions & Animations</li>
+                        <li>Everything in Essential</li>
+                        <li>Up to 5 Portfolio Pages</li>
+                        <li>Gallery Sections per Category</li>
+                        <li>Booking/Inquiry Integration</li>
+                        <li>Custom Animations</li>
                     </ul>
                     <a href="#proposal" class="btn">Get your preview</a>
                 </div>
                 <!-- Tier 3 -->
                 <div class="package-card fade-in">
                     <span class="package-name">Elite</span>
-                    <div class="package-price">$5,500+</div>
+                    <div class="package-price">$1,000+</div>
                     <ul class="package-features">
-                        <li>Full Editorial Studio Experience</li>
-                        <li>E-commerce / Print Shop Integration</li>
-                        <li>Advanced Performance Hosting</li>
-                        <li>Priority Project Timeline</li>
-                        <li>Quarterly Maintenance & Updates</li>
+                        <li>Everything in Professional</li>
+                        <li>Unlimited Pages</li>
+                        <li>E-commerce / Print Shop</li>
+                        <li>Priority Timeline</li>
+                        <li>3 Months of Updates & Support</li>
                     </ul>
                     <a href="#proposal" class="btn">Get your preview</a>
                 </div>
@@ -1111,24 +1233,6 @@
         </div>
     </section>
 
-    <!-- Social Proof -->
-    <section class="social-proof">
-        <div class="container">
-            <h2 class="section-title">Kind Words</h2>
-            <div class="testimonials">
-                <div class="testimonial fade-in">
-                    <p class="testimonial-text">"fotofolio didn't just build a site; they built a brand. My bookings doubled within the first month of launching."</p>
-                    <div class="mono" style="margin-top: 2rem;">Elena V.</div>
-                    <div style="font-size: 0.85rem; color: var(--gray-dark);">Vogue Photographer</div>
-                </div>
-                <div class="testimonial fade-in">
-                    <p class="testimonial-text">"The editorial feel is exactly what I was looking for. It finally feels like my digital presence matches my work's quality."</p>
-                    <div class="mono" style="margin-top: 2rem;">Marcus Chen</div>
-                    <div style="font-size: 0.85rem; color: var(--gray-dark);">Architectural Photographer</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Final CTA Section -->
     <section id="proposal" class="cta">
@@ -1137,18 +1241,22 @@
             <div class="cta-form fade-in">
                 <form id="proposal-form" action="https://formspree.io/f/xrekvkkp" method="POST">
                     <input type="text" name="_honey" style="display:none">
-                    <div id="form-status" style="display: none; padding: 1rem; margin-bottom: 1rem; border-radius: 4px; font-family: 'Inter', sans-serif; font-weight: 600;"></div>
+                    <div id="form-status"
+                        style="display: none; padding: 1rem; margin-bottom: 1rem; border-radius: 4px; font-family: 'Inter', sans-serif; font-weight: 600;">
+                    </div>
                     <div class="form-group">
                         <label for="name" class="mono">Name</label>
                         <input type="text" id="name" name="name" class="form-control" required placeholder="Your name">
                     </div>
                     <div class="form-group">
                         <label for="email" class="mono">Email</label>
-                        <input type="email" id="email" name="email" class="form-control" required placeholder="Your email">
+                        <input type="email" id="email" name="email" class="form-control" required
+                            placeholder="Your email">
                     </div>
                     <div class="form-group">
                         <label for="project" class="mono">Project Description</label>
-                        <textarea id="project" name="message" class="form-control" placeholder="Tell us about your photography style..." required></textarea>
+                        <textarea id="project" name="message" class="form-control"
+                            placeholder="Tell us about your photography style..." required></textarea>
                     </div>
                     <button type="submit" class="btn">Get your preview</button>
                 </form>
@@ -1159,8 +1267,11 @@
     <!-- Footer -->
     <footer style="background: var(--black); color: var(--white); padding: 8rem 0; text-align: center;">
         <div class="container">
-            <div class="footer-logo" style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 2rem;">fotofolio</div>
-            <p class="copyright" style="color: rgba(255, 255, 255, 0.4); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;">© 2026 fotofolio. All rights reserved.</p>
+            <div class="footer-logo"
+                style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 2rem;">fotofolio</div>
+            <p class="copyright"
+                style="color: rgba(255, 255, 255, 0.4); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;">
+                © 2026 fotofolio. All rights reserved.</p>
         </div>
     </footer>
 
@@ -1207,52 +1318,52 @@
             if (index === 0) dot.classList.add('active');
             dot.setAttribute('data-index', index);
             dot.addEventListener('click', () => updatePortfolio(index));
-            if(portfolioNav) portfolioNav.appendChild(dot);
+            if (portfolioNav) portfolioNav.appendChild(dot);
         });
 
         function loadIframe(index) {
             const iframe = document.getElementById(`iframe-${index}`);
             if (!iframe) return;
             if (loadedIframes.has(index)) {
-               document.querySelectorAll('.website-iframe').forEach(f => f.classList.remove('active'));
-               iframe.classList.add('active');
-               return;
+                document.querySelectorAll('.website-iframe').forEach(f => f.classList.remove('active'));
+                iframe.classList.add('active');
+                return;
             }
             const src = iframe.getAttribute('data-src');
             if (iframeOverlay) iframeOverlay.classList.remove('hidden');
             iframe.src = src;
             iframe.onload = () => {
                 loadedIframes.add(index);
-                setTimeout(() => { if(iframeOverlay) iframeOverlay.classList.add('hidden'); }, 500);
+                setTimeout(() => { if (iframeOverlay) iframeOverlay.classList.add('hidden'); }, 500);
             };
-            setTimeout(() => { if(iframeOverlay) iframeOverlay.classList.add('hidden'); }, 3000);
+            setTimeout(() => { if (iframeOverlay) iframeOverlay.classList.add('hidden'); }, 3000);
         }
 
         function updatePortfolio(index) {
             const item = portfolioItems[index];
             if (!item) return;
-            if(projectName) projectName.textContent = item.name;
-            if(projectChallenge) projectChallenge.textContent = item.challenge;
-            if(projectSolution) projectSolution.textContent = item.solution;
-            if(frameUrl) frameUrl.textContent = item.link;
-            
+            if (projectName) projectName.textContent = item.name;
+            if (projectChallenge) projectChallenge.textContent = item.challenge;
+            if (projectSolution) projectSolution.textContent = item.solution;
+            if (frameUrl) frameUrl.textContent = item.link;
+
             document.querySelectorAll('.website-iframe').forEach(iframe => iframe.classList.remove('active'));
             const activeIframe = document.getElementById(`iframe-${index}`);
             if (activeIframe) activeIframe.classList.add('active');
-            
+
             loadIframe(index);
-            
+
             document.querySelectorAll('.portfolio-dot').forEach(dot => dot.classList.remove('active'));
             let activeDot = portfolioNav.querySelector(`[data-index="${index}"]`);
-            if(activeDot) activeDot.classList.add('active');
-            
+            if (activeDot) activeDot.classList.add('active');
+
             prevBtn.disabled = index === 0;
             nextBtn.disabled = index === portfolioItems.length - 1;
             currentPortfolioIndex = index;
         }
 
-        if(prevBtn) prevBtn.addEventListener('click', () => { if (currentPortfolioIndex > 0) updatePortfolio(currentPortfolioIndex - 1); });
-        if(nextBtn) nextBtn.addEventListener('click', () => { if (currentPortfolioIndex < portfolioItems.length - 1) updatePortfolio(currentPortfolioIndex + 1); });
+        if (prevBtn) prevBtn.addEventListener('click', () => { if (currentPortfolioIndex > 0) updatePortfolio(currentPortfolioIndex - 1); });
+        if (nextBtn) nextBtn.addEventListener('click', () => { if (currentPortfolioIndex < portfolioItems.length - 1) updatePortfolio(currentPortfolioIndex + 1); });
 
         // Touch/Swipe
         let touchStartX = 0;
@@ -1272,6 +1383,33 @@
         }
 
         updatePortfolio(0);
+
+        // Mobile Menu Logic
+        const menuOpen = document.getElementById('menu-open');
+        const menuClose = document.getElementById('menu-close');
+        const mobileOverlay = document.getElementById('mobile-overlay');
+        const overlayLinks = document.querySelectorAll('.overlay-link');
+
+        if (menuOpen && mobileOverlay) {
+            menuOpen.addEventListener('click', () => {
+                mobileOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        }
+
+        if (menuClose && mobileOverlay) {
+            menuClose.addEventListener('click', () => {
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        }
+
+        overlayLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
 
         // Form
         const proposalForm = document.getElementById('proposal-form');
@@ -1312,4 +1450,5 @@
         checkScroll();
     </script>
 </body>
+
 </html>
