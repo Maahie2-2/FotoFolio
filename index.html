@@ -390,23 +390,110 @@
 
         .portfolio-frame {
             background-color: #000;
-            width: 320px;
+            width: 393px; /* Standard iPhone 14/15 Pro width */
             max-width: 100%;
-            aspect-ratio: 9/18;
+            aspect-ratio: 9/19.5; /* Modern aspect ratio */
             height: auto;
             margin: 0 auto;
-            border-radius: 40px;
-            border: 12px solid #111;
-            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.4);
+            border-radius: 54px;
+            border: 12px solid #1a1a1a;
+            box-shadow: 
+                0 0 0 2px #333,
+                0 50px 100px -20px rgba(0,0,0,0.5),
+                0 30px 60px -30px rgba(0,0,0,0.6);
             position: relative;
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+            user-select: none;
+        }
+
+        /* Status Bar */
+        .frame-status-bar {
+            position: absolute;
+            top: 12px;
+            left: 0;
+            width: 100%;
+            height: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 32px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #000;
+            z-index: 25;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        .status-icons {
+            display: flex;
+            gap: 6px;
+            align-items: center;
         }
 
         .portfolio-frame:hover {
-            transform: translateY(-20px);
+            transform: translateY(-20px) scale(1.02);
+            box-shadow: 
+                0 0 0 2px #444,
+                0 60px 120px -20px rgba(0,0,0,0.6),
+                0 40px 80px -30px rgba(0,0,0,0.7);
+        }
+
+        /* Dynamic Island / Notch */
+        .frame-island {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 28px;
+            background: #000;
+            border-radius: 20px;
+            z-index: 20;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .frame-island::after {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #1a1a1a;
+            border-radius: 50%;
+            margin-left: 40px;
+        }
+
+        /* Home Indicator */
+        .frame-home-bar {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 5px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            z-index: 20;
+            transition: background 0.3s ease;
+        }
+
+        .portfolio-frame:hover .frame-home-bar {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        /* Screen Reflection */
+        .frame-reflection {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
+            pointer-events: none;
+            z-index: 15;
         }
 
         .frame-header {
@@ -422,11 +509,19 @@
         }
 
         .website-iframe {
-            width: 100%;
-            height: 100%;
+            width: calc(100% + 18px); /* Hide scrollbar */
+            height: calc(100% + 40px); /* Extend height to bottom */
             border: none;
             display: none;
+            background: #fff;
+            margin-top: 0;
         }
+
+        .website-iframe::-webkit-scrollbar {
+            display: none;
+        }
+
+
 
         .website-iframe.active {
             display: block;
@@ -449,6 +544,35 @@
         .iframe-overlay.hidden {
             opacity: 0;
             pointer-events: none;
+        }
+
+        /* Side Buttons */
+        .frame-btn {
+            position: absolute;
+            background: #1a1a1a;
+            border-radius: 2px;
+            z-index: 5;
+        }
+
+        .frame-btn-power {
+            right: -14px;
+            top: 100px;
+            width: 3px;
+            height: 60px;
+        }
+
+        .frame-btn-vol-up {
+            left: -14px;
+            top: 80px;
+            width: 3px;
+            height: 40px;
+        }
+
+        .frame-btn-vol-down {
+            left: -14px;
+            top: 130px;
+            width: 3px;
+            height: 40px;
         }
 
         .portfolio-info {
@@ -860,10 +984,15 @@
             }
 
             .portfolio-frame {
-                width: 280px;
-                /* Force consistent phone look on small devices */
+                width: 320px;
                 border-width: 10px;
-                border-radius: 34px;
+                border-radius: 48px;
+            }
+
+            .frame-island {
+                width: 80px;
+                height: 22px;
+                top: 15px;
             }
 
             .portfolio-info h3 {
@@ -951,7 +1080,6 @@
 
         .portfolio-info p {
             font-size: 0.9rem;
-        }
         }
 
         @media (max-width: 360px) {
@@ -1143,15 +1271,31 @@
                 </div>
 
                 <div class="portfolio-frame">
+                    <div class="frame-status-bar">
+                        <div class="status-time">9:41</div>
+                        <div class="status-icons">
+                            <i class="fas fa-signal"></i>
+                            <i class="fas fa-wifi"></i>
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                    </div>
+                    <div class="frame-island"></div>
+                    <div class="frame-reflection"></div>
+                    <div class="frame-btn frame-btn-power"></div>
+                    <div class="frame-btn frame-btn-vol-up"></div>
+                    <div class="frame-btn frame-btn-vol-down"></div>
                     <div class="frame-content">
                         <div class="iframe-overlay" id="iframe-overlay">
                             <div class="loading-spinner"></div>
                         </div>
-                        <iframe class="website-iframe" id="iframe-0"
+                        <iframe class="website-iframe" id="iframe-0" title="Artistry By Ariel"
                             data-src="https://artistry-by-ariel.pages.dev/"></iframe>
-                        <iframe class="website-iframe" id="iframe-1" data-src="https://adp-preview.pages.dev/"></iframe>
-                        <iframe class="website-iframe" id="iframe-2" data-src="https://lg-preview.pages.dev/"></iframe>
+                        <iframe class="website-iframe" id="iframe-1" title="Madame-D Photography" 
+                            data-src="https://madame-d-photography.pages.dev/"></iframe>
+                        <iframe class="website-iframe" id="iframe-2" title="LG Photography" 
+                            data-src="https://lg-preview.pages.dev/"></iframe>
                     </div>
+                    <div class="frame-home-bar"></div>
                 </div>
             </div>
         </div>
@@ -1285,11 +1429,11 @@
                 thumbnail: "ariel.png"
             },
             {
-                name: "Amber Deaton Photography",
-                challenge: "Capturing the 'unstageable' raw beauty of Arizona's desert love and motherhood.",
-                solution: "A weathering-inspired, tactile digital experience featuring Southwest palettes and intimate storytelling layouts.",
-                link: "https://adp-preview.pages.dev/",
-                thumbnail: "adp.png"
+                name: "Madame-D Photography",
+                challenge: "Capturing the raw emotion and beauty of authentic storytelling through a cinematic and editorial lens.",
+                solution: "A luxury digital showcase that blends powerful elegance with cinematic light and curated editorial narratives.",
+                link: "https://madame-d-photography.pages.dev/",
+                thumbnail: "madame-d.png"
             },
             {
                 name: "LG Photography MB",
