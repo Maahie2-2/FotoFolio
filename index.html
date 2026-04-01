@@ -294,6 +294,8 @@
             position: relative;
             z-index: 10;
             max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
             padding: 0;
             background: transparent;
             backdrop-filter: none;
@@ -305,16 +307,18 @@
         }
 
         .hero h1 {
-            font-size: 6rem;
-            margin-bottom: 2rem;
-            line-height: 1;
-            letter-spacing: -0.04em;
+            font-family: 'Inter', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.1;
+            letter-spacing: 0.05em;
             color: var(--white);
-            font-weight: 400;
+            font-weight: 500;
+            text-transform: uppercase;
         }
 
         .hero p {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             margin-bottom: 3.5rem;
             max-width: 600px;
             color: rgba(255, 255, 255, 0.6);
@@ -334,10 +338,16 @@
             color: var(--white);
         }
 
+        .hero-description p {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
         .hero-btns {
             display: flex;
             gap: 1.5rem;
             margin-top: 1rem;
+            justify-content: center;
         }
 
         @media (max-width: 768px) {
@@ -638,33 +648,7 @@
             width: 30px;
         }
 
-        /* Process Section */
-        .process {
-            background-color: var(--black);
-            color: var(--white);
-        }
 
-        .process .section-title {
-            color: var(--white);
-        }
-
-        .step-number {
-            font-size: 1rem;
-            font-family: 'Sometype Mono', monospace;
-            color: rgba(255, 255, 255, 0.4);
-            margin-bottom: 2rem;
-            display: block;
-        }
-
-        .process-step h3 {
-            font-size: 1.75rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .process-step p {
-            color: rgba(255, 255, 255, 0.6);
-            font-weight: 300;
-        }
 
         /* Testimonials */
         .testimonial {
@@ -808,14 +792,33 @@
 
         /* Footer */
         footer {
-            padding: 3rem 0;
+            background-color: var(--black);
+            color: var(--white);
+            padding: 6rem 0;
             text-align: center;
-            border-top: 1px solid var(--gray-medium);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .footer-bottom {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            align-items: center;
         }
 
         .copyright {
-            color: var(--gray-dark);
-            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .footer-signature {
+            color: rgba(255, 255, 255, 0.15);
+            font-size: 0.65rem;
+            font-family: 'Sometype Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
         }
 
         /* Animations */
@@ -938,9 +941,7 @@
             }
 
             .value-grid,
-            .process-grid,
-            .services-grid,
-            .testimonials {
+            .services-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
@@ -1164,6 +1165,66 @@
                 display: inline;
             }
         }
+        .hero-description {
+            margin-bottom: 4rem;
+        }
+
+        .hero-description p {
+            margin-bottom: 0.75rem !important;
+            max-width: 700px !important;
+        }
+
+        .hero-description p:last-child {
+            margin-bottom: 0 !important;
+            color: rgba(255, 255, 255, 0.4) !important;
+            font-size: 1rem !important;
+            font-weight: 400 !important;
+        }
+
+        .cta-description {
+            max-width: 700px;
+            margin: -3rem auto 4rem;
+            color: var(--gray-dark);
+            font-size: 1.25rem;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            .hero-description {
+                margin-bottom: 3rem;
+            }
+            .cta-description {
+                margin: -2rem auto 3rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        .marquee-wrap {
+            margin-top: 5rem;
+            padding: 2rem 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-family: 'Sometype Mono', monospace;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 700;
+        }
+
+        @media (max-width: 768px) {
+            .marquee-wrap {
+                font-size: 0.7rem;
+                padding: 1.5rem 0;
+                margin-top: 4rem;
+                letter-spacing: 0.1em;
+            }
+        }
     </style>
 </head>
 
@@ -1196,15 +1257,19 @@
         </div>
         <div class="container">
             <div class="hero-content fade-in">
-                <h1>Websites that book more clients for photographers</h1>
-                <p>Convert viewers into lifelong clients with high-end digital experiences tailored for visual
-                    storytellers and photography studios.
-                </p>
+                <h1>Your photography deserves more than an Instagram feed.</h1>
+                <div class="hero-description">
+                    <p>We design websites that make people stop, feel something — and book.</p>
+                    <p>Built for photographers who are done looking “good enough” online.</p>
+                </div>
                 <div class="hero-btns">
                     <a href="#proposal" class="btn">Get your free preview</a>
                     <a href="#portfolio" class="btn"
                         style="background-color: transparent; color: var(--white); border: 1px solid var(--white);">View
                         Showcase</a>
+                </div>
+                <div class="marquee-wrap">
+                    Not for beginners. Best suited for photographers already booking clients.
                 </div>
             </div>
         </div>
@@ -1213,27 +1278,24 @@
     <!-- Value Proposition Section -->
     <section class="value-props">
         <div class="container">
-            <h2 class="section-title">Elevating Your Digital Presence</h2>
             <div class="value-grid">
                 <div class="value-card fade-in">
                     <span class="mono"
-                        style="color: var(--gray-dark); margin-bottom: 2rem; display: block;">Sophistication</span>
-                    <h3>Editorial Grade Design</h3>
-                    <p>Websites that look like they belong in a high-end fashion magazine, matching the quality of your
-                        photography.</p>
+                        style="color: var(--gray-dark); margin-bottom: 2rem; display: block;">Presence</span>
+                    <h3>Look like you charge what you actually want to charge.</h3>
+                    <p>Your work already has taste. Your website should reflect it — not dilute it.</p>
                 </div>
                 <div class="value-card fade-in">
                     <span class="mono"
-                        style="color: var(--gray-dark); margin-bottom: 2rem; display: block;">Performance</span>
-                    <h3>Swift Loading</h3>
-                    <p>Optimized image delivery so your portfolio loads instantly without sacrificing a single pixel of
-                        quality.</p>
+                        style="color: var(--gray-dark); margin-bottom: 2rem; display: block;">Speed</span>
+                    <h3>If it takes more than 2 seconds, they’re gone.</h3>
+                    <p>We build fast-loading portfolios that keep attention where it belongs: on your work.</p>
                 </div>
                 <div class="value-card fade-in">
                     <span class="mono"
                         style="color: var(--gray-dark); margin-bottom: 2rem; display: block;">Conversion</span>
-                    <h3>Strategic Booking</h3>
-                    <p>Custom-built funnels designed specifically to turn "just browsing" into confirmed bookings.</p>
+                    <h3>Pretty doesn’t book clients. Clarity does.</h3>
+                    <p>Every page is structured to move visitors from curiosity → inquiry → deposit.</p>
                 </div>
             </div>
         </div>
@@ -1288,12 +1350,14 @@
                         <div class="iframe-overlay" id="iframe-overlay">
                             <div class="loading-spinner"></div>
                         </div>
-                        <iframe class="website-iframe" id="iframe-0" title="Artistry By Ariel"
-                            data-src="https://artistry-by-ariel.pages.dev/"></iframe>
+                        <iframe class="website-iframe" id="iframe-0" title="Briars Photography" 
+                            data-src="https://briars-photography.pages.dev/"></iframe>
                         <iframe class="website-iframe" id="iframe-1" title="Madame-D Photography" 
                             data-src="https://madame-d-photography.pages.dev/"></iframe>
-                        <iframe class="website-iframe" id="iframe-2" title="LG Photography" 
-                            data-src="https://lg-preview.pages.dev/"></iframe>
+                        <iframe class="website-iframe" id="iframe-2" title="Artistry By Ariel"
+                            data-src="https://artistry-by-ariel.pages.dev/"></iframe>
+                        <iframe class="website-iframe" id="iframe-3" title="Amber Deaton Photography" 
+                            data-src="https://adp-preview.pages.dev/"></iframe>
                     </div>
                     <div class="frame-home-bar"></div>
                 </div>
@@ -1301,32 +1365,7 @@
         </div>
     </section>
 
-    <!-- My Process -->
-    <section class="process">
-        <div class="container">
-            <h2 class="section-title">The fotofolio Method</h2>
-            <div class="process-grid">
-                <div class="process-step fade-in">
-                    <span class="step-number">01</span>
-                    <h3>Aesthetic Discovery</h3>
-                    <p>We analyze your photography style—lighting, mood, and composition—to ensure your website is an
-                        extension of your lens.</p>
-                </div>
-                <div class="process-step fade-in">
-                    <span class="step-number">02</span>
-                    <h3>Editorial Build</h3>
-                    <p>Your site is hand-crafted with high-end typography and smooth transitions that reflect an
-                        expensive editorial feel.</p>
-                </div>
-                <div class="process-step fade-in">
-                    <span class="step-number">03</span>
-                    <h3>Client Conversion</h3>
-                    <p>We integrate booking systems and lead magnets that simplify the path from first click to deposit
-                        paid.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Packages Section -->
     <section id="packages" class="packages">
@@ -1337,12 +1376,13 @@
                 <div class="package-card fade-in">
                     <span class="package-name">Essential</span>
                     <div class="package-price">$350</div>
+                    <p style="font-size: 0.9rem; color: var(--gray-dark); margin-bottom: 2rem;">For photographers who need a clean, credible presence — fast.</p>
                     <ul class="package-features">
-                        <li>Custom Single-Page Website</li>
-                        <li>Mobile-Responsive Design</li>
-                        <li>Contact Form Integration</li>
-                        <li>Image Optimization</li>
-                        <li>Basic SEO Setup</li>
+                        <li>Custom single-page website</li>
+                        <li>Mobile-optimized</li>
+                        <li>Contact system</li>
+                        <li>Image optimization</li>
+                        <li>SEO foundation</li>
                     </ul>
                     <a href="#proposal" class="btn">Get your preview</a>
                 </div>
@@ -1351,12 +1391,13 @@
                     style="border-color: var(--black); transform: scale(1.05); background: #fdfdfd;">
                     <span class="package-name">Professional</span>
                     <div class="package-price">$650</div>
+                    <p style="font-size: 0.9rem; color: var(--gray-dark); margin-bottom: 2rem;">For photographers ready to present their work with structure and depth.</p>
                     <ul class="package-features">
                         <li>Everything in Essential</li>
-                        <li>Up to 5 Portfolio Pages</li>
-                        <li>Gallery Sections per Category</li>
-                        <li>Booking/Inquiry Integration</li>
-                        <li>Custom Animations</li>
+                        <li>Up to 5 pages</li>
+                        <li>Categorized galleries</li>
+                        <li>Inquiry / booking integration</li>
+                        <li>Refined transitions</li>
                     </ul>
                     <a href="#proposal" class="btn">Get your preview</a>
                 </div>
@@ -1364,12 +1405,13 @@
                 <div class="package-card fade-in">
                     <span class="package-name">Elite</span>
                     <div class="package-price">$1,000+</div>
+                    <p style="font-size: 0.9rem; color: var(--gray-dark); margin-bottom: 2rem;">For photographers building a brand — not just a portfolio.</p>
                     <ul class="package-features">
                         <li>Everything in Professional</li>
-                        <li>Unlimited Pages</li>
-                        <li>E-commerce / Print Shop</li>
-                        <li>Priority Timeline</li>
-                        <li>3 Months of Updates & Support</li>
+                        <li>Unlimited pages</li>
+                        <li>Print shop / e-commerce</li>
+                        <li>Priority delivery</li>
+                        <li>3 months support</li>
                     </ul>
                     <a href="#proposal" class="btn">Get your preview</a>
                 </div>
@@ -1381,7 +1423,7 @@
     <!-- Final CTA Section -->
     <section id="proposal" class="cta">
         <div class="container">
-            <h2 class="section-title">Get your free preview</h2>
+            <h2 class="section-title">We’ll design a preview of your website before you pay anything.</h2>
             <div class="cta-form fade-in">
                 <form id="proposal-form" action="https://formspree.io/f/xrekvkkp" method="POST">
                     <input type="text" name="_honey" style="display:none">
@@ -1402,45 +1444,55 @@
                         <textarea id="project" name="message" class="form-control"
                             placeholder="Tell us about your photography style..." required></textarea>
                     </div>
-                    <button type="submit" class="btn">Get your preview</button>
+                    <button type="submit" class="btn">Get your free preview</button>
+                    <p style="margin-top: 1.5rem; font-family: 'Sometype Mono', monospace; font-size: 0.8rem; color: var(--gray-dark); font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">
+                        No upfront payment. No commitment.<br>
+                        If you don’t like it, you walk away.
+                    </p>
                 </form>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer style="background: var(--black); color: var(--white); padding: 8rem 0; text-align: center;">
+    <footer>
         <div class="container">
-            <div class="footer-logo"
-                style="font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-bottom: 2rem;">fotofolio</div>
-            <p class="copyright"
-                style="color: rgba(255, 255, 255, 0.4); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;">
-                © 2026 fotofolio. All rights reserved.</p>
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 fotofolio. All rights reserved.</p>
+                <div class="footer-signature">Designed with intention.</div>
+            </div>
         </div>
     </footer>
 
     <script>
         const portfolioItems = [
             {
-                name: "Artistry By Ariel",
-                challenge: "Establishing a luxury digital presence that mirrors high-end portrait artistry.",
-                solution: "A warm, sophisticated deep-palette theme with seamless cinematic storytelling.",
-                link: "https://artistry-by-ariel.pages.dev/",
-                thumbnail: "ariel.png"
+                name: "Briars Photography",
+                challenge: "Beautiful work. No clear reason to stay, explore, or inquire. Visitors looked — then left.",
+                solution: "We rebuilt the experience to feel intentional. Stronger structure. Clear flow. Defined next steps. People didn’t just browse — they stayed, connected, and reached out.",
+                link: "https://briars-photography.pages.dev/",
+                thumbnail: "briars.png"
             },
             {
                 name: "Madame-D Photography",
-                challenge: "Capturing the raw emotion and beauty of authentic storytelling through a cinematic and editorial lens.",
-                solution: "A luxury digital showcase that blends powerful elegance with cinematic light and curated editorial narratives.",
+                challenge: "Beautiful work. No clear reason to stay, explore, or inquire. Visitors looked — then left.",
+                solution: "We rebuilt the experience to feel intentional. Stronger structure. Clear flow. Defined next steps. People didn’t just browse — they stayed, connected, and reached out.",
                 link: "https://madame-d-photography.pages.dev/",
                 thumbnail: "madame-d.png"
             },
             {
-                name: "LG Photography MB",
-                challenge: "Conveying the 'gentle artistry' and 'timeless warmth' of Manitoba-based wedding and family photography.",
-                solution: "A soft, elegant digital showcase featuring generous white space, curated editorial grids, and emotionally resonant typography.",
-                link: "https://lg-preview.pages.dev/",
-                thumbnail: "lg.png"
+                name: "Artistry By Ariel",
+                challenge: "Beautiful work. No clear reason to stay, explore, or inquire. Visitors looked — then left.",
+                solution: "We rebuilt the experience to feel intentional. Stronger structure. Clear flow. Defined next steps. People didn’t just browse — they stayed, connected, and reached out.",
+                link: "https://artistry-by-ariel.pages.dev/",
+                thumbnail: "ariel.png"
+            },
+            {
+                name: "Amber Deaton Photography",
+                challenge: "Beautiful work. No clear reason to stay, explore, or inquire. Visitors looked — then left.",
+                solution: "We rebuilt the experience to feel intentional. Stronger structure. Clear flow. Defined next steps. People didn’t just browse — they stayed, connected, and reached out.",
+                link: "https://adp-preview.pages.dev/",
+                thumbnail: "adp.png"
             }
         ];
 
